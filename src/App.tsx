@@ -1,11 +1,17 @@
-import Circle from "./components/Circle";
+import { styled } from "styled-components";
+
+const Container = styled.div`
+  background-color: ${(props) => props.theme.bgColor};
+`;
+const Title = styled.h1`
+  color: ${(props) => props.theme.textColor};
+`;
 
 function App() {
   return (
-    <div>
-      <Circle bgColor={"teal"} borderColor={"tomato"} />
-      <Circle bgColor={"tomato"} borderColor="teal" />
-    </div>
+    <Container>
+      <Title>안녕 리액트??</Title>
+    </Container>
   );
 }
 
