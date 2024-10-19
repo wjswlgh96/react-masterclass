@@ -1,3 +1,3 @@
 export interface ButtonProps {
-  bgColor: string;
+  $bgColor: string;
 }

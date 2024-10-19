@@ -3,9 +3,10 @@ import ReactDOM from "react-dom/client";
 
 // Components
 import { ResetStyles } from "./resetStyles";
-import ThemeSelector from "./components/ThemeSelector";
 
-import App from "./App";
+import { RouterProvider } from "react-router-dom";
+import router from "./screens/Router";
+import ThemeProviderWrapper from "./components/ThemeProviderWrapper";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,9 +14,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <ResetStyles />
-    <ThemeSelector>
-      <App />
-    </ThemeSelector>
+    <ThemeProviderWrapper>
+      <ResetStyles />
+      <RouterProvider router={router} />
+    </ThemeProviderWrapper>
   </React.StrictMode>
 );

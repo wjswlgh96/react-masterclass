@@ -1,16 +1,18 @@
+import { Outlet } from "react-router-dom";
 import { styled } from "styled-components";
+import Header from "./components/Header";
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
   background-color: ${(props) => props.theme.bgColor};
-`;
-const Title = styled.h1`
-  color: ${(props) => props.theme.textColor};
 `;
 
 function App() {
   return (
     <Container>
-      <Title>안녕 리액트??</Title>
+      <Header />
+      <Outlet />
     </Container>
   );
 }
