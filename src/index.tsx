@@ -4,9 +4,8 @@ import ReactDOM from "react-dom/client";
 // Components
 import { ResetStyles } from "./resetStyles";
 
-import { RouterProvider } from "react-router-dom";
-import router from "./screens/Router";
 import ThemeProviderWrapper from "./components/ThemeProviderWrapper";
+import App from "./App";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -16,7 +15,7 @@ root.render(
   <React.StrictMode>
     <ThemeProviderWrapper>
       <ResetStyles />
-      <RouterProvider router={router} />
+      <App />
     </ThemeProviderWrapper>
   </React.StrictMode>
 );

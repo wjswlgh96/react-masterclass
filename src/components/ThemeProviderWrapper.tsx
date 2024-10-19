@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { ThemeProvider } from "styled-components";
-import { darkTheme, lightTheme } from "../theme";
+import { theme } from "../theme";
 import { ThemeContext } from "../function/useTheme";
 
 export default function ThemeProviderWrapper({
@@ -15,9 +15,7 @@ export default function ThemeProviderWrapper({
 
   return (
     <ThemeContext.Provider value={{ isLight, toggleTheme }}>
-      <ThemeProvider theme={isLight ? lightTheme : darkTheme}>
-        {children}
-      </ThemeProvider>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </ThemeContext.Provider>
   );
 }

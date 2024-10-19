@@ -1,6 +1,5 @@
-import { Outlet } from "react-router-dom";
 import { styled } from "styled-components";
-import Header from "./components/Header";
+import Router from "./routes/Router";
 
 const Container = styled.div`
   display: flex;
@@ -11,8 +10,7 @@ const Container = styled.div`
 function App() {
   return (
     <Container>
-      <Header />
-      <Outlet />
+      <Router />
     </Container>
   );
 }
