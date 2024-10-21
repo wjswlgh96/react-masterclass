@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
 import {
   Link,
   Route,
@@ -9,9 +8,9 @@ import {
   useRouteMatch,
 } from "react-router-dom";
 
-import { GET_COINS_PRICE_URL, GET_COINS_URL } from "../constant/urls";
 import { CoinPriceDataType, CoinInfoDataType } from "../types/data/Coin";
 
+import { Helmet } from "react-helmet-async";
 import Price from "./Price";
 import Chart from "./Chart";
 import { Container, Header, Loader, Title } from "../components/CoinComponent";
@@ -79,13 +78,19 @@ export default function Coin() {
   );
   const { isLoading: priceLoading, data: price } = useQuery<CoinPriceDataType>(
     ["price", coinId],
-    () => getCoinPrice(coinId)
+    () => getCoinPrice(coinId),
+    { refetchInterval: 5000 }
   );
 
   const loading = infoLoading || priceLoading;
 
   return (
     <Container>
+      <Helmet>
+        <title>
+          {state?.name ? state.name : loading ? "로딩중..." : info?.name}
+        </title>
+      </Helmet>
       <Header>
         <Title>
           {state?.name ? state.name : loading ? "로딩중..." : info?.name}
@@ -105,8 +110,8 @@ export default function Coin() {
               <span>{info?.symbol}</span>
             </OverviewItem>
             <OverviewItem>
-              <span>OPEN Source:</span>
-              <span>{info?.open_source ? "Yes" : "No"}</span>
+              <span>Price:</span>
+              <span>{price?.quotes.USD.price.toFixed(3)}</span>
             </OverviewItem>
           </Overview>
           <Description>{info?.description}</Description>
@@ -135,7 +140,7 @@ export default function Coin() {
               <Price />
             </Route>
             <Route path={`/:coinId/chart`}>
-              <Chart />
+              <Chart coinId={coinId} />
             </Route>
           </Switch>
         </>

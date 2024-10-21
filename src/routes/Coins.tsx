@@ -13,6 +13,7 @@ import {
 } from "../components/CoinComponent";
 import { useQuery } from "react-query";
 import { getAllCoins } from "../api/coin";
+import { Helmet } from "react-helmet-async";
 
 export default function Coins() {
   const { isLoading, data } = useQuery<CoinDataType[]>(
@@ -22,6 +23,9 @@ export default function Coins() {
 
   return (
     <Container>
+      <Helmet>
+        <title>코인</title>
+      </Helmet>
       <Header>
         <Title>코인</Title>
       </Header>

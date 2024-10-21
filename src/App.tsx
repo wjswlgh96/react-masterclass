@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import Router from "./routes/Router";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { HelmetProvider } from "react-helmet-async";
 
 const Container = styled.div`
   display: flex;
@@ -11,8 +12,10 @@ const Container = styled.div`
 function App() {
   return (
     <Container>
-      <Router />
-      <ReactQueryDevtools initialIsOpen />
+      <HelmetProvider>
+        <Router />
+      </HelmetProvider>
+      <ReactQueryDevtools />
     </Container>
   );
 }

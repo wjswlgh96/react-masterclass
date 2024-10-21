@@ -64,3 +64,14 @@ export interface CoinPriceDataType {
   last_updated: string;
   quotes: CoinPriceQuotesDataType;
 }
+
+export interface CoinHistoryDataType {
+  time_open: number;
+  time_close: number;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  volumn: number;
+  market_cap: number;
+}
