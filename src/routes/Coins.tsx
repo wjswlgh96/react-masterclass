@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { CoinDataType } from "../types/data/Coin";
-import { useEffect, useState } from "react";
-import { COIN_ICON_URL, GET_COINS_URL } from "../constant/urls";
+import { COIN_ICON_URL } from "../constant/urls";
 import {
   Coin,
   CoinImg,
@@ -12,30 +11,25 @@ import {
   Loader,
   Title,
 } from "../components/CoinComponent";
+import { useQuery } from "react-query";
+import { getAllCoins } from "../api/coin";
 
 export default function Coins() {
-  const [coins, setCoins] = useState<CoinDataType[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    (async () => {
-      const response = await fetch(GET_COINS_URL);
-      const json = await response.json();
-      setCoins(json.slice(0, 100));
-      setLoading(false);
-    })();
-  }, []);
+  const { isLoading, data } = useQuery<CoinDataType[]>(
+    "getAllCoins",
+    getAllCoins
+  );
 
   return (
     <Container>
       <Header>
         <Title>코인</Title>
       </Header>
-      {loading ? (
+      {isLoading ? (
         <Loader>로딩중...</Loader>
       ) : (
         <CoinsList>
-          {coins.map((coin) => (
+          {data?.slice(0, 100).map((coin) => (
             <Coin key={coin.id}>
               <Link
                 to={{

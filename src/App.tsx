@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import Router from "./routes/Router";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 const Container = styled.div`
   display: flex;
@@ -11,6 +12,7 @@ function App() {
   return (
     <Container>
       <Router />
+      <ReactQueryDevtools initialIsOpen />
     </Container>
   );
 }

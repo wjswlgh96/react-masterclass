@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useTheme } from "../function/useTheme";
-import { ButtonProps } from "../types/props/Button";
+import { ButtonProps } from "../types/styles/Button";
 
 const Container = styled.div`
   display: flex;
